@@ -1,1 +1,2 @@
-__author__ = 'asa'
+text = str(input())
+print(text)
