@@ -1,4 +1,4 @@
 # python_course
 homework
 
-Kate
+Kate Skomorokhova
