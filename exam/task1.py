@@ -10,14 +10,19 @@ def find_ka(x):
     if s == "yo":
         return x
     else:
-        x =" "
+        x = " "
         return x
 
-for i in text:
-    i = i.split()
-    f = []
-    for i in i:
-        e = find_ka(i)
-        f += [e]
-    print(" ".join(f))
+with open("answer.txt","a+") as out:
+    for i in text:
+        i = i.split()
+        f = []
+        for i in i:
+            e = find_ka(i)
+            f += [e]
+        out.write(' '.join(f)+'\n')
+
+a.close()
+
+
 
