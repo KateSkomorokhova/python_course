@@ -8,7 +8,7 @@ class Song:
         self.time = time
 
     def __repr__(self):
-        inf = "%s %s %s %s %s %s" % (self.song, self.artist, self.album, self.track, self.year, self.time)
+        inf = "%s\t%s\t%s\t%s\t%s\t%s" % (self.song, self.artist, self.album, self.track, self.year, self.time)
         return inf
 
     def __lt__(self, other):
@@ -18,30 +18,29 @@ class Song:
             return True
         return False
 
-#Необходимо написать функцию import_songs(file_name),
+# Необходимо написать функцию import_songs(file_name),
 # которая принимает строковое имя файла (в tsv-формате, формат будет приведен ниже) считывает его
 # и возвращает лист instance object'ов класса Song
-list_song = []
 def import_songs(file_name):
+    list_song = []
     with open(file_name, "r") as inf:
         for line in inf:
             song, artist, album, track, year, time = line[:-1].split("\t")
             list_song.append(Song(song, artist, album, track, year, time))
     return list_song
-import_songs("new.txt")
+list_song = import_songs("new.txt")
 
-#Необходимо написать функцию export_songs(songs, file_names),
+# Необходимо написать функцию export_songs(songs, file_names),
 # которая принимает список песен и строковое имя файла и записывает в него песни в tsv-формате
 def export_songs(songs, file_names):
-    new_file = open(file_names, "a")
+    new_file = open(file_names, "w")
     for i in songs:
         new_file.write(str(i))
         new_file.write(str("\n"))
     new_file.close()
-
 export_songs(list_song, "a")
 
-#(Дополнительно) Написать функцию shuffle_songs(songs),
+# (Дополнительно) Написать функцию shuffle_songs(songs),
 # которая принимает список песен и возвращает перемешанный список песен (можно использовать from random import shuffle)
 def shuffle_songs(songs):
     from random import shuffle
@@ -49,8 +48,7 @@ def shuffle_songs(songs):
     return(songs)
 shuffle_songs(list_song)
 
-
-#  Вывести на экран самого часто встречающегося исполнителя (по числу песен),
+# Вывести на экран самого часто встречающегося исполнителя (по числу песен),
 # если таких несколько, вывести любого из них (artist_name) done
 def frq_art(file_name):
 
@@ -85,12 +83,10 @@ def frq_art(file_name):
     comparison(art)
     for i in art:
         print(i)
-
 frq_art("new.txt")
 
-
-#Вывести на экран самую длинную песню, если таких несколько,
-#вывести любую из них (song_name (TAB) artist_name)
+# Вывести на экран самую длинную песню, если таких несколько,
+# вывести любую из них (song_name (TAB) artist_name)
 def long_song(file_name):
 
     def key_time(song):
@@ -103,16 +99,13 @@ def long_song(file_name):
     f = len(t)-1
     r = t[f]
     print(r.song+"\t"+r.artist)
-
 long_song("new.txt")
 
-import re
-
-#Вывести на экран самый длинный альбом (песни считаются в одном альбоме,
+# Вывести на экран самый длинный альбом (песни считаются в одном альбоме,
 # если название альбомов и название исполнителей совпадают), по времени
 # если таких несколько, вывести любой из них (album_name (TAB) artist_name)
+import re
 def alb(file_name):
-
     art = {}
     lst = []
     for song in sorted(list_song):
@@ -185,15 +178,14 @@ def fun_word(file_name):
                 if k in r:
                     m -= 1
                     while m not in a.values():
-                        m -=1
+                        m -= 1
                 else:
                     r += [k]
-    print("\t".join(r[0:12]))
-
+    print("\t".join(r[0:10]))
 fun_word("new.txt")
 
-#Вывести на экран исполнителя с наибольшим числом альбомов,
-#если таких несколько, то вывести любого из них (artist_name)
+# Вывести на экран исполнителя с наибольшим числом альбомов,
+# если таких несколько, то вывести любого из них (artist_name)
 def max_album(file_name):
 
     def comparison(dict):
@@ -227,7 +219,6 @@ def max_album(file_name):
     comparison(art)
     for i in art:
         print(i)
-
 max_album("new.txt")
 
 
