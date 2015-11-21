@@ -12,7 +12,7 @@ def find_ka(x):
         x = " "
         return x
 
-with open("answer.txt", "a+") as out:
+with open("answer.txt", "w") as out:
     for i in text:
         i = i.split()
         f = []
