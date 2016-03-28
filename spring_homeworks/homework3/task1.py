@@ -20,8 +20,6 @@ home_dir = '/home/python_course/sad'
 if command == 'store':
     if os.path.isfile(path):
         shutil.copy(path, home_dir)
-    else:
-        shutil.copy(path, home_dir)
 if command == 'diff':
     one = path.split('/')[-1]
     two = "diff " + path + " ./sad/" + one
